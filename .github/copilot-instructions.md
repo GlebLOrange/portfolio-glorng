@@ -11,3 +11,4 @@ Use [`AGENTS.md`](../AGENTS.md) for the agent entry map (which doc to open when)
 Prefer those over inventing new conventions.
 
 Gortex code areas: `analyze(operation:"communities")` or [`.cursor/references/gortex-communities.md`](../.cursor/references/gortex-communities.md).
+

@@ -4,6 +4,7 @@ from app.services.ai_chat import (
     GroqUsage,
     _parse_stream_line,
     estimate_groq_cost_usd,
+    log_groq_usage,
     parse_groq_usage,
 )
 
@@ -81,3 +82,44 @@ def test_parse_stream_line_reads_usage_without_text() -> None:
         completion_tokens=3,
         reasoning_tokens=0,
     )
+
+
+def test_log_groq_usage_includes_telemetry_fields(monkeypatch: object) -> None:
+    """Log telemetry with latency, task ID, and billing breakdown."""
+    from app.services import ai_chat
+
+    captured: dict[str, object] = {}
+
+    def fake_info(event: str, *, context: dict[str, object]) -> None:
+        captured["event"] = event
+        captured.update(context)
+
+    monkeypatch.setattr(ai_chat.logger, "info", fake_info)  # type: ignore[attr-defined]
+
+    usage = GroqUsage(
+        prompt_tokens=100,
+        cached_tokens=40,
+        uncached_tokens=60,
+        completion_tokens=25,
+        reasoning_tokens=5,
+    )
+    log_groq_usage(
+        task="chat",
+        model="openai/gpt-oss-120b",
+        usage=usage,
+        usage_present=True,
+        elapsed_ms=123.456,
+        task_id="task-99",
+    )
+    assert captured["event"] == "Groq usage"
+    assert captured["task"] == "chat"
+    assert captured["model"] == "openai/gpt-oss-120b"
+    assert captured["elapsed_ms"] == 123.46
+    assert captured["task_id"] == "task-99"
+    assert captured["prompt_tokens"] == 100
+    assert captured["cached_tokens"] == 40
+    assert captured["uncached_tokens"] == 60
+    assert captured["completion_tokens"] == 25
+    assert captured["reasoning_tokens"] == 5
+    assert captured["reasoning_forwarded"] is False
+    assert captured["cost_estimate_usd"] is not None

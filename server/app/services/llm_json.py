@@ -1,6 +1,7 @@
 """Groq JSON completion helper."""
 
 import json
+import time
 from typing import Any
 
 import httpx
@@ -46,6 +47,7 @@ async def complete_json(
     task: str,
     temperature: float = 0.0,
     api_base_url: str = GROQ_API_BASE_URL,
+    task_id: str | None = None,
 ) -> dict[str, Any]:
     """Return a parsed JSON object from a Groq chat completion."""
     cleaned = sanitize_required_text(user_content)
@@ -62,6 +64,7 @@ async def complete_json(
 
     max_attempts = GROQ_MAX_RETRIES + 1
     response: httpx.Response | None = None
+    start_time = time.perf_counter()
     for attempt in range(max_attempts):
         try:
             async with httpx.AsyncClient(timeout=45.0) as client:
@@ -100,6 +103,7 @@ async def complete_json(
     if response is None:
         raise ApiError(502, "AI API unreachable")
 
+    elapsed_ms = (time.perf_counter() - start_time) * 1000.0
     body = response.json()
     usage = parse_groq_usage(body.get("usage") if isinstance(body, dict) else None)
     log_groq_usage(
@@ -107,6 +111,8 @@ async def complete_json(
         model=model,
         usage=usage,
         usage_present=usage is not None,
+        elapsed_ms=elapsed_ms,
+        task_id=task_id,
     )
     raw = _extract_message_content(body if isinstance(body, dict) else {})
     try:
