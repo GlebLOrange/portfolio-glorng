@@ -1,5 +1,6 @@
 import asyncio
 import json
+import time
 from collections.abc import AsyncIterator
 from dataclasses import dataclass
 from typing import Any
@@ -86,6 +87,8 @@ def log_groq_usage(
     model: str,
     usage: GroqUsage | None,
     usage_present: bool,
+    elapsed_ms: float | None = None,
+    task_id: str | None = None,
 ) -> None:
     """Log token usage by billing type without prompt or response text."""
     context: dict[str, Any] = {
@@ -93,6 +96,10 @@ def log_groq_usage(
         "model": model,
         "usage_present": usage_present,
     }
+    if elapsed_ms is not None:
+        context["elapsed_ms"] = round(elapsed_ms, 2)
+    if task_id:
+        context["task_id"] = task_id
     if usage is not None:
         context.update(
             {
@@ -291,6 +298,7 @@ class GroqChatService:
         *,
         system_prompt: str | None = None,
         temperature: float = 0.7,
+        task_id: str | None = None,
     ) -> AsyncIterator[str]:
         """Yield text deltas from a streaming Groq chat completion."""
         payload = {
@@ -310,6 +318,7 @@ class GroqChatService:
         last_usage: GroqUsage | None = None
         usage_present = False
         max_attempts = GROQ_MAX_RETRIES + 1
+        start_time = time.perf_counter()
         for attempt in range(max_attempts):
             try:
                 async with (
@@ -361,9 +370,12 @@ class GroqChatService:
         if not has_text:
             raise ApiError(502, "Groq returned no response text")
 
+        elapsed_ms = (time.perf_counter() - start_time) * 1000.0
         log_groq_usage(
             task="chat",
             model=self._model,
             usage=last_usage,
             usage_present=usage_present,
+            elapsed_ms=elapsed_ms,
+            task_id=task_id,
         )
