@@ -20,3 +20,4 @@ Personas: [`.cursor/agents/README.md`](.cursor/agents/README.md). Orchestration:
 Gortex code areas: `analyze(operation:"communities")` or [`.cursor/references/gortex-communities.md`](.cursor/references/gortex-communities.md).
 
 Gemini: tooling (Gortex MCP + hooks) lives in [`.gemini/settings.json`](.gemini/settings.json); `GEMINI.md` and `CLAUDE.md` only point here — edit this file, not them.
+
