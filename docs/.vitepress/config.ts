@@ -1,7 +1,7 @@
 import { defineConfig } from "vitepress";
 
-// Project Pages URL uses /personal-glorng/; local `make docs-dev` stays at /.
-const base = process.env.CI ? "/personal-glorng/" : "/";
+// Project Pages URL uses /portfolio-glorng/; local `make docs-dev` stays at /.
+const base = process.env.CI ? "/portfolio-glorng/" : "/";
 
 export default defineConfig({
   title: "Gleb.Y",
