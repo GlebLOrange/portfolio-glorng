@@ -33,4 +33,4 @@ nginx/     Reverse proxy (:80)
 docs/      This handbook (VitePress)
 ```
 
-For Cursor agents: [AGENTS.md](https://github.com/GlebLOrange/personal-glorng/blob/main/AGENTS.md) (entry map), [CODING_STANDARDS.md](https://github.com/GlebLOrange/personal-glorng/blob/main/CODING_STANDARDS.md) (skill index), [Cloud VM](/operations/cloud-vm).
+For Cursor agents: [AGENTS.md](https://github.com/GlebLOrange/portfolio-glorng/blob/main/AGENTS.md) (entry map), [CODING_STANDARDS.md](https://github.com/GlebLOrange/portfolio-glorng/blob/main/CODING_STANDARDS.md) (skill index), [Cloud VM](/operations/cloud-vm).

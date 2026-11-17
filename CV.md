@@ -65,7 +65,7 @@ Approach: HttpOnly cookie sessions with capability RBAC; CSRF origin checks on m
 
 Result: Documented security path with CSRF middleware tests; bad Origin rejected in production; Bearer automation unaffected.
 
-Docs: https://gleblorange.github.io/personal-glorng/reference/security.html#csrf-and-cors
+Docs: https://gleblorange.github.io/portfolio-glorng/reference/security.html#csrf-and-cors
 
 ### SSRF-safe outbound fetch
 **Python · httpx · asyncio · DNS**
@@ -76,7 +76,7 @@ Approach: Resolve public DNS off the event loop, connect to that IP with Host + 
 
 Result: Fail-closed public fetch with unit coverage for SNI, relative redirects, and off-loop DNS — used by outbound tool paths.
 
-Code: https://github.com/GlebLOrange/personal-glorng/blob/main/server/app/core/url_safety.py
+Code: https://github.com/GlebLOrange/portfolio-glorng/blob/main/server/app/core/url_safety.py
 
 ## EDUCATION
 

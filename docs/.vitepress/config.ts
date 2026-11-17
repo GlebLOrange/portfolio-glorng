@@ -150,7 +150,7 @@ export default defineConfig({
     socialLinks: [
       {
         icon: "github",
-        link: "https://github.com/GlebLOrange/personal-glorng",
+        link: "https://github.com/GlebLOrange/portfolio-glorng",
       },
     ],
   },
