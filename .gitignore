@@ -90,7 +90,6 @@ media/
 
 # Local git worktrees
 .worktrees/
-.wt/
 
 # Gortex Mermaid dumps
 docs/architecture/*.mermaid
