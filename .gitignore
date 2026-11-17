@@ -68,8 +68,6 @@ client/npm-debug.log*
 .cursor/worktrees.json
 .cursor/setup-worktree-unix.sh
 .cursor/workspace-context/sessions/
-# Offloaded community skill bodies live in .cursor/references/gortex-skills/
-.cursor/skills/gortex-*/
 latestcommit.mdc
 
 # Ephemeral agent review dumps
@@ -92,7 +90,6 @@ media/
 
 # Local git worktrees
 .worktrees/
-.wt/
 
 # Gortex Mermaid dumps
 docs/architecture/*.mermaid
