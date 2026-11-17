@@ -14,7 +14,7 @@
 | [API endpoints](/generated/api-endpoints) | Generated OpenAPI path table |
 | [Architecture inventory](/generated/architecture-inventory) | Generated platform + Compose inventory |
 
-Published site: [gleblorange.github.io/personal-glorng](https://gleblorange.github.io/personal-glorng/) (GitHub Pages via Actions).
+Published site: [gleblorange.github.io/portfolio-glorng](https://gleblorange.github.io/portfolio-glorng/) (GitHub Pages via Actions).
 
 ## Browse locally
 
