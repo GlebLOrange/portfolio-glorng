@@ -121,7 +121,7 @@ export const RESUME_FALLBACK: ResumeData = {
         " bad Origin rejected in production; Bearer automation unaffected.",
       tech: ["FastAPI", "cookies", "CSRF", "RBAC", "Redis"],
       url:
-        "https://gleblorange.github.io/personal-glorng/" + "reference/security.html#csrf-and-cors",
+        "https://gleblorange.github.io/portfolio-glorng/" + "reference/security.html#csrf-and-cors",
     },
     {
       slug: "ssrf-safe-fetch",
@@ -141,7 +141,7 @@ export const RESUME_FALLBACK: ResumeData = {
         " redirects, and off-loop DNS — used by outbound tool paths.",
       tech: ["Python", "httpx", "asyncio", "DNS"],
       url:
-        "https://github.com/GlebLOrange/personal-glorng/blob/main/" +
+        "https://github.com/GlebLOrange/portfolio-glorng/blob/main/" +
         "server/app/core/url_safety.py",
     },
   ],
