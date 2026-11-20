@@ -1,10 +1,16 @@
 {
   "mcpServers": {
     "gortex": {
+      "command": "gortex",
       "args": [
-        "mcp"
+        "mcp",
+        "--proxy",
+        "--index",
+        "/Users/glorange/projects/portfolio-glorng"
       ],
-      "command": "gortex"
+      "env": {
+        "CURSOR_WORKSPACE": "/Users/glorange/projects/portfolio-glorng"
+      }
     }
   }
 }
