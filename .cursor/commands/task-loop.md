@@ -1,6 +1,6 @@
 # Task loop (Manager → Developer)
 
-Parent Cursor control surface: one controlled pass. Only you spawn personas.
+Required implementation workflow. All coding and tools stay in the current local checkout; do not use cloud/remote agents, remote workspaces, or upload source.
 
 ```text
 $ARGUMENTS
@@ -8,11 +8,7 @@ $ARGUMENTS
 
 If empty, ask once for the task text and stop.
 
-## Constraints
-
-- Do not modify application code; delegate. No commit/push/PR/merge unless the user later asks.
-- Create `cursor/<slug>` before Developer (never `agent/TASK-*`); slug from Manager `branch_hint` or the request.
-- Do not spawn Gortex, `qa`, or `code-reviewer`. Stop after Developer.
+For every implementation task, the parent creates a fresh `ai/<slug>` branch from current HEAD, even when already on an `ai/*` branch. Never reuse an existing branch; stop if the chosen name exists. Do not commit, push, or perform PR actions unless the user explicitly requests that exact action.
 
 ## 1 — Manager (Assign)
 
@@ -32,7 +28,7 @@ Wait for TASK yaml. If recommendations instead, ask once for Assign-mode yaml on
 
 ## 2 — Branch
 
-Create `cursor/<slug>` from `branch_hint` (or short kebab) if not already on it.
+Create a fresh `ai/<slug>` branch from current HEAD using `branch_hint` (or a short kebab); stop if that branch name already exists.
 
 ## 3 — Developer
 
@@ -40,11 +36,11 @@ Spawn `developer` with the TASK yaml plus:
 
 ```text
 Implement this TASK from /task-loop.
-- Stay on existing branch cursor/<slug>; do not ask about the branch.
+- Stay on the fresh `ai/<slug>` branch created by the parent.
 - Read CODING_STANDARDS.md before app edits; stay in scope.
 - Gortex: .cursor/rules/gortex-workflow.mdc.
 - Run only TASK `checks:`; empty checks → SKIPPED (empty checks).
-- Do not commit, push, or open a PR.
+- Do not commit, push, or open a PR unless the user explicitly requests that exact action.
 - Return the developer evidence block (requirement-bar one-liner included).
 ```
 

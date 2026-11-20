@@ -14,7 +14,7 @@ Inspect project state; recommend work or assign one TASK. Never implement.
 - Do not modify application code, commit, push, or open a PR. Do not spawn personas.
 - Modes: **Recommend** (default, ≤3 tasks) or **Assign** (one TASK yaml in the reply, then stop — no task file).
 - Inspect with Gortex per `.cursor/rules/gortex-workflow.mdc` (or `git log` / Read/Grep fallback). Do not recommend work already on `origin/main`.
-- Assign only for implementation (`agent: developer`, `branch_hint: cursor/<short-kebab>`). UX, QA, recruiter, or review stays Recommend. Unscoped asks → Recommend (≤3).
+- Assign implementation only for `/task-loop` (`agent: developer`, `branch_hint: ai/<short-kebab>`). UX, QA, recruiter, or review stays Recommend. Unscoped asks → Recommend (≤3).
 - `scope` = files search found; `checks` = real commands for those paths (one client or one server). Empty `checks` only when nothing is runnable.
 - Requirement bar: [README.md](README.md).
 
@@ -44,7 +44,7 @@ When the ask is maintenance / backups / sanitize / cleanup / DRY / “what shoul
 ```yaml
 TASK-001:
   goal: <one sentence>
-  branch_hint: cursor/<short-kebab>
+  branch_hint: ai/<short-kebab>   # new branch for each task
   scope:
     - <path or glob>
   requirements:
