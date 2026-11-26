@@ -58,6 +58,14 @@ nginx/     Reverse proxy (:80)
 docs/      VitePress handbook
 ```
 
+## Related repositories
+
+| Repo | Role |
+| --- | --- |
+| **This repo** | Public site, admin panel, Telegram todobot, and background workers. |
+| **config** (`~/projects/config`) | Machine settings and agent templates (synced here via `scripts/sync-repo.sh`). Desired run state for this service is a row in `config/catalog/services.yaml`, not a handbook document. |
+| **swarm-board** (`~/projects/swarm-board`) | Control-center UI. This site does not show service probes, hostnames, or action history. |
+
 ## Branches
 
 Feature branches use `cursor/<short-kebab>`. Do not commit or push to `main` unless asked. Details: [Contributing → Branch workflow](docs/guide/contributing.md#branch-workflow).
