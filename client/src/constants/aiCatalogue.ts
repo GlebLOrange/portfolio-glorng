@@ -175,7 +175,6 @@ export const AI_CATALOGUE_ITEMS: readonly AiCatalogueItem[] = [
     status: "on",
     tags: ["code-intel"],
     source: ".agents/mcp_config.json",
-    tools: [],
   },
   {
     id: "rule-agent-workflow",
