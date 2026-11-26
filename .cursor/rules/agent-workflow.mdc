@@ -1,9 +1,7 @@
 ---
 description: >-
-  Branches off main before edits, blocks unrequested commits/pushes/secrets/destructive
-  git, checks existing packages before new imports, and asks before running tests. Use
-  when editing tracked files, committing, pushing, adding an import, or deciding whether
-  to run tests.
+  Creates a fresh local ai/<slug> branch for each task and keeps execution local;
+  prevents unrequested commits, pushes, PRs, cloud agents, and source uploads.
 alwaysApply: true
 ---
 
