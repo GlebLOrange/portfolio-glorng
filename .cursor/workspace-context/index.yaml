@@ -13,6 +13,12 @@
 #   path: sessions/YYYY-MM-DD-slug.md
 sessions:
   - date: 2026-11-26
+    task: Merge cleaned dev into main via PR 963
+    files: [qqq.cfg, .wt/, .github/workflows/groq-review.yml]
+    symbols: []
+    todos: []
+    summary: #964 stripped junk on dev; #963 squash-merged to main at f370d792
+  - date: 2026-11-26
     task: Restore Gortex MCP workspace path
     files: [.agents/mcp_config.json, .cursor/mcp.json.example]
     symbols: [CURSOR_WORKSPACE]

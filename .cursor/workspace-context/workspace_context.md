@@ -3,18 +3,18 @@
 Load **Active task** only at session start (or when resuming). Load **Durable project facts** only when the task needs them. Never dump this whole file plus transcripts into the prompt.
 
 ## Active task
-- Goal: Restore Gortex MCP tools for this checkout
-- Branch: ai/docs-repo-roles
-- Relevant files: .agents/mcp_config.json, .cursor/mcp.json.example
-- Decisions: Absolute checkout path in gortex mcp --proxy --index and CURSOR_WORKSPACE
+- Goal: Merge cleaned `dev` into `main` via PR 963
+- Branch: main @ f370d792 (synced to origin/main)
+- Relevant files: qqq.cfg (removed), .wt/ (gitlinks removed), .github/workflows/groq-review.yml (removed)
+- Decisions: Junk stripped on `dev` via #964 first; #963 squash-merged (merge commits disabled)
 - Open questions: none
-- Next action: Reload Gortex in Cursor MCP settings, then a new chat
+- Next action: none — #963 merged; local main matches origin
 - Test command:
-- Key symbols: CURSOR_WORKSPACE
-- TODOs: Reload MCP; do not commit unless asked
-- Summary: Index was healthy; tools were missing because MCP started without a workspace path
+- Key symbols:
+- TODOs: none
+- Summary: Dropped accidental files on `dev`, then landed `dev` on `main` as Dev (#963)
 
 ## Durable project facts
 - Architecture:
 - Conventions:
-- Known pitfalls:
+- Known pitfalls: `main` rulesets require checks `gitleaks` and `dev-source-branch`; those Actions workflows can be `disabled_manually` and then block merges. Repo has `allow_merge_commit: false` (squash/rebase only).
