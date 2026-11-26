@@ -1,3 +1,85 @@
+# --- repo-base ignore rules ---
+# Environment & secrets
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.env.local
+*.pem
+*.key
+!.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+htmlcov/
+.coverage
+coverage.xml
+*.db
+dist/
+build/
+
+# Node
+node_modules/
+.npm/
+.eslintcache
+*.tsbuildinfo
+.vite/
+dist/
+coverage/
+playwright-report/
+test-results/
+
+# Editors / OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/*
+!.vscode/tasks.json
+!.vscode/extensions.json
+
+# Cursor (local-only; rules and hooks under .cursor/ are tracked)
+.cursor/debug-*.log
+
+# Local git worktrees / caches
+.worktrees/
+.gortex/
+.docker-cache/
+skills-lock.json
+
+# Misc
+*.log
+tmp/
+.cache/
+
+# Cursor local (rules/commands/agents/hooks/skills stay tracked)
+.cursor/settings.json
+.cursor/worktrees.json
+.cursor/setup-worktree-unix.sh
+.cursor/workspace-context/sessions/
+
+# --- vue-client ignore rules ---
+# Vue/Vite stack additions
+*.local
+.vite-inspect/
+
+# --- fastapi-server ignore rules ---
+# FastAPI/Python stack additions
+.hypothesis/
+.tox/
+.nox/
+.benchmarks/
+site/
+
+# --- overlay ignore rules ---
 # === OS & Editor Junk ===
 .DS_Store
 Thumbs.db
@@ -90,7 +172,6 @@ media/
 
 # Local git worktrees
 .worktrees/
-.wt/
 
 # Gortex Mermaid dumps
 docs/architecture/*.mermaid
