@@ -109,7 +109,7 @@ function resetOverrides(): void {
 watch(isNarrow, resetOverrides);
 resetOverrides();
 
-function defaultSectionOpen(_id: string): boolean {
+function defaultSectionOpen(): boolean {
   return !isNarrow.value;
 }
 
@@ -118,8 +118,11 @@ function isSectionOpen(id: string): boolean {
     const section = visibleSections.value.find((entry) => entry.meta.id === id);
     if (section && section.items.length > 0) return true;
   }
-  if (id in sectionOpenOverrides) return sectionOpenOverrides[id]!;
-  return defaultSectionOpen(id);
+  if (id in sectionOpenOverrides) {
+    const override = sectionOpenOverrides[id];
+    if (override !== undefined) return override;
+  }
+  return defaultSectionOpen();
 }
 
 function onSectionToggle(id: string, open: boolean): void {
@@ -180,7 +183,6 @@ watch(
 
 watch(filtering, (active, wasActive) => {
   if (wasActive && !active) {
-    // Restore remembered open state after clearing search/status.
     resetOverrides();
   }
 });
@@ -194,10 +196,6 @@ watch(filtering, (active, wasActive) => {
     body-width="content"
     description="skills, personas, mcp servers, plugins, and rules."
   >
-    <p class="mb-4 text-sm text-surface-sage">
-      skills, personas, mcp servers, plugins, and rules.
-    </p>
-
     <div class="mb-3">
       <SearchInput
         v-model="query"

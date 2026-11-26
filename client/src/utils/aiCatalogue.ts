@@ -43,7 +43,6 @@ function itemMatchesStatus(item: AiCatalogueItem, status: AiCatalogueStatusFilte
   return item.status === status;
 }
 
-/** True when search text or a non-default status filter is active. */
 export function isAiCatalogueFiltering(input: AiCatalogueFilterInput): boolean {
   return normalizeQuery(input.query).length > 0 || input.status !== "any";
 }
