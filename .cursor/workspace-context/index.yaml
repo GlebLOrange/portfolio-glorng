@@ -11,4 +11,10 @@
 #   todos: [next step]
 #   summary: one line
 #   path: sessions/YYYY-MM-DD-slug.md
-sessions: []
+sessions:
+  - date: 2026-11-26
+    task: Restore Gortex MCP workspace path
+    files: [.agents/mcp_config.json, .cursor/mcp.json.example]
+    symbols: [CURSOR_WORKSPACE]
+    todos: [Reload Gortex MCP, then new chat]
+    summary: MCP config now pins the absolute portfolio checkout; tools need a server reload

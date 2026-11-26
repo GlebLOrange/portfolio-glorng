@@ -2,6 +2,8 @@
 
 **Gleb.Y** is a FastAPI + Vue 3 developer portfolio and personal platform. The same domain services power the public site, admin panel, Telegram todobot, and background workers.
 
+Machine settings and agent templates come from `config` (desired run state is a catalog row there). The control-center UI is `swarm-board`; this handbook and site do not expose service probes, hostnames, or action history.
+
 ## Quick links
 
 | Section | Topics |

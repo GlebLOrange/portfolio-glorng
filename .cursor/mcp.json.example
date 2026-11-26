@@ -6,10 +6,10 @@
         "mcp",
         "--proxy",
         "--index",
-        "${workspaceFolder}"
+        "/Users/glorange/projects/portfolio-glorng"
       ],
       "env": {
-        "CURSOR_WORKSPACE": "${workspaceFolder}"
+        "CURSOR_WORKSPACE": "/Users/glorange/projects/portfolio-glorng"
       }
     }
   }

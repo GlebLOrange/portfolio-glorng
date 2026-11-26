@@ -1,13 +1,18 @@
 <script setup lang="ts">
 import { FOCUS_RING_DEFAULT } from "@/constants/httpStatusColors";
 
-defineProps<{
-  id: string;
-  label: string;
-  count: number;
-  /** Controlled open state (mobile collapsed / one-open accordion). */
-  open: boolean;
-}>();
+const props = withDefaults(
+  defineProps<{
+    id: string;
+    label: string;
+    count: number;
+    /** Controlled open state (mobile collapsed / one-open accordion). */
+    open: boolean;
+    /** Singular noun for the screen-reader count (default: tool). */
+    countNoun?: string;
+  }>(),
+  { countNoun: "tool" },
+);
 
 const emit = defineEmits<{
   toggle: [open: boolean];
@@ -19,7 +24,8 @@ const DETAILS_CLASS =
   "group scroll-mt-[calc(var(--page-chrome-h,var(--page-chrome-h-fallback))+4.25rem)] rounded-xl border border-transparent bg-surface-card/40 open:bg-surface-card/55";
 
 function countLabel(count: number): string {
-  return count === 1 ? "1 tool" : `${count} tools`;
+  const noun = props.countNoun;
+  return count === 1 ? `1 ${noun}` : `${count} ${noun}s`;
 }
 
 function onToggle(event: Event): void {
